@@ -43,18 +43,18 @@ const MaterialTable = ({ baseLink, columns, rows }) => {
           {rows.map((row, i) => {
             return (
               <TableRow
-                key={`row-${row.id}-${i + 1}`}
+                key={`row-${row._id}-${i + 1}`}
                 hover
                 role="checkbox"
                 tabIndex={-1}
               >
-                {getRedirectCell(row.id)}
+                {getRedirectCell(row._id)}
 
                 {columns.map((column, j) => {
                   const value = row[column.id];
                   return (
                     <Cell
-                      key={`cell-${column.id}-${row.id}-${j + 1}`}
+                      key={`cell-${column.id}-${row._id}-${j + 1}`}
                       align={column.align}
                     >
                       {column.format ? column.format(value) : value}

@@ -28,6 +28,8 @@
     "@unform/web": "^2.0.0",
     "axios": "^0.19.2",
     "customize-cra": "^0.9.1",
+    "date-fns": "^2.11.0",
+    "date-fns-tz": "^1.0.10",
     "history": "^4.10.1",
     "polished": "^3.5.0",
     "prop-types": "^15.7.2",

@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
+import devices from '~/styles/config/device';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
 
   * {
     margin: 0;
@@ -30,27 +30,33 @@ export default createGlobalStyle`
   }
 
   .toast-container {
-    z-index: 11000;
+    z-index: 10000;
+
+    @media ${devices.mobileS} {
+      padding: 15px;
+      top: 60px;
+    }
+
     .Toastify__toast {
-        border-radius: 8px;
-        padding: 30px;
-        box-shadow: 0 1px 2px 0 rgba(0,0,0, 0.1);
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 1px 2px 0 rgba(0,0,0, 0.1);
     }
 
     .Toastify__toast--success {
-        background-color: #34C759;
+      background-color: #34C759;
     }
 
     .Toastify__toast--error {
-        background-color: #FF3B30;
+      background-color: #FF3B30;
     }
 
     .Toastify__toast--warning {
-        background-color: #FFCC00;
+      background-color: #FFCC00;
     }
 
     .Toastify__toast--info {
-        background-color: #5AC8FA;
+      background-color: #5AC8FA;
     }
   }
 

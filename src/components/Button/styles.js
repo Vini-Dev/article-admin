@@ -18,6 +18,15 @@ export const Container = styled.button`
     background-color: ${({ theme }) => theme.buttonInvertBackground};
   }
 
+  &.invert-back {
+    color: #48484a;
+    background-color: ${({ theme }) => theme.buttonInvertBackground};
+
+    &:hover {
+      color: #3a3a3c;
+    }
+  }
+
   &.invert-border {
     color: ${({ theme }) => theme.buttonInvertForeground};
     background-color: ${({ theme }) => theme.buttonInvertBackground};
