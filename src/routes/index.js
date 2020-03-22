@@ -1,8 +1,9 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
+import Article from '~/pages/Article';
 import Login from '~/pages/Login';
-import Welcome from '~/pages/Welcome';
 import Tag from '~/pages/Tag';
+import Welcome from '~/pages/Welcome';
 
 import Routes from './Routes';
 
@@ -11,6 +12,10 @@ export default function Router() {
     <Switch>
       <Routes path="/" public exact component={Login} />
       <Routes path="/welcome" component={Welcome} />
+      {/* Articles */}
+      <Routes path="/articles" component={Article.List} />
+      <Routes path="/article/add" component={Article.Store} />
+      <Routes path="/article/edit/:id" component={Article.Edit} />
       {/* Tags */}
       <Routes path="/tags" component={Tag.List} />
       <Routes path="/tag/add" component={Tag.Store} />

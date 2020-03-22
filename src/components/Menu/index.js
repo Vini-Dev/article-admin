@@ -4,6 +4,19 @@ import { IoIosMenu, IoIosClose } from 'react-icons/io';
 
 import { Container, Title, Toggle, Modal, Item } from './styles';
 
+const modules = [
+  {
+    label: 'Tags',
+    path: '/tags',
+    groups: ['/tags', '/tag/add', '/tag/edit'],
+  },
+  {
+    label: 'Artigos',
+    path: '/articles',
+    groups: ['/articles', '/article/add', '/article/edit'],
+  },
+];
+
 const Menu = () => {
   const location = useLocation();
 
@@ -23,18 +36,15 @@ const Menu = () => {
       </Toggle>
       <Title>Articles</Title>
       <Modal isOpen={open}>
-        <Item
-          to="/tags"
-          current={location.pathname.includes('tag') ? 'active' : ''}
-        >
-          Tags
-        </Item>
-        <Item
-          to="/articles"
-          active={location.pathname.includes('article') ? 'active' : ''}
-        >
-          Artigos
-        </Item>
+        {modules.map(m => (
+          <Item
+            key={m.path}
+            to={m.path}
+            current={m.groups.includes(location.pathname) ? 'active' : ''}
+          >
+            {m.label}
+          </Item>
+        ))}
       </Modal>
     </Container>
   );

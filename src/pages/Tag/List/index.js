@@ -5,6 +5,7 @@ import formatDistance from 'date-fns/formatDistance';
 import { toast } from 'react-toastify';
 import { IoIosArrowForward } from 'react-icons/io';
 import Button from '~/components/Button';
+import { ReactComponent as Empty } from '~/assets/undraw_empty_xct9.svg';
 import api from '~/services/api';
 
 import {
@@ -17,34 +18,11 @@ import {
   CardTitle,
   CardTime,
   CardRedirectIcon,
+  NoContent,
 } from './styles';
 
 const List = () => {
-  const [tags, setTags] = useState({
-    data: [],
-  });
-
-  // const columns = [
-  //   {
-  //     id: 'name',
-  //     label: 'Nome',
-  //     minWidth: 70,
-  //   },
-  //   {
-  //     id: 'updated_at',
-  //     label: 'Atualizado',
-  //     minWidth: 70,
-  //     format: value =>
-  //       formatDistance(
-  //         utcToZonedTime(new Date(value), 'America/Sao_Paulo'),
-  //         utcToZonedTime(new Date(), 'America/Sao_Paulo'),
-  //         {
-  //           locale: pt,
-  //           addSuffix: true,
-  //         }
-  //       ),
-  //   },
-  // ];
+  const [tags, setTags] = useState();
 
   useEffect(() => {
     const getData = async () => {
@@ -76,9 +54,9 @@ const List = () => {
           <Title>Tags</Title>
           <Button to="/tag/add">Nova tag</Button>
         </HeadControls>
-        <GridCard>
-          {tags &&
-            tags.data.map(tag => (
+        {tags && (
+          <GridCard>
+            {tags.data.map(tag => (
               <Card key={tag._id} to={`/tag/edit/${tag._id}`}>
                 <CardTitle>{tag.name}</CardTitle>
                 <CardTime>atualizado {distanceTime(tag.updated_at)}</CardTime>
@@ -87,7 +65,14 @@ const List = () => {
                 </CardRedirectIcon>
               </Card>
             ))}
-        </GridCard>
+          </GridCard>
+        )}
+
+        {tags && tags.totalSize === 0 && (
+          <NoContent>
+            <Empty />
+          </NoContent>
+        )}
       </Content>
     </Container>
   );
