@@ -28,7 +28,7 @@ const List = () => {
     const getData = async () => {
       try {
         const res = await api.get(`/articles?page=1&perPage=100`);
-        console.log(res.data);
+
         setArticles(res.data);
       } catch (error) {
         toast.error('Erro ao buscar as articles...');
@@ -54,7 +54,9 @@ const List = () => {
                 <ArticleDescription>
                   <ArticleTitle>{article.title}</ArticleTitle>
                   <ArticleAuthor>Por João</ArticleAuthor>
-                  <ArticleContent>{article.content}</ArticleContent>
+                  <ArticleContent>
+                    {article.content.replace(/<[^>]*>/g, '')}
+                  </ArticleContent>
                   <ArticleTags>
                     {article.tags.map(tag => (
                       <ArticleTag key={tag._id}>{tag.name}</ArticleTag>

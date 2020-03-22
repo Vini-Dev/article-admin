@@ -7,9 +7,10 @@ import devices from '~/styles/config/device';
 export const Container = styled.div`
   background-color: #1c1c1e;
 
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
     position: fixed;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 
     z-index: 99999;
@@ -32,7 +33,7 @@ export const Container = styled.div`
 export const Title = styled.div`
   color: #ffffff;
 
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
     font-size: 16px;
     font-weight: 500;
     position: absolute;
@@ -67,13 +68,36 @@ export const Toggle = styled.button`
     font-size: 24px;
   }
 
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
+    display: block;
+  }
+`;
+
+export const Logout = styled.button`
+  display: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  padding: 8px 12px;
+  height: 100%;
+  color: #ffffff;
+  border: none;
+  background-color: transparent;
+
+  svg {
+    ${FadeIn}
+    pointer-events: none;
+    font-size: 24px;
+  }
+
+  @media ${devices.mobile} {
     display: block;
   }
 `;
 
 export const Modal = styled.div`
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
     height: calc(100vh - 60px);
     top: 60px;
     left: 0;

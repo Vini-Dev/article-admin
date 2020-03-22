@@ -9,10 +9,12 @@ import api from '~/services/api';
 
 import { Container, Content, Title, SaveZone } from './styles';
 import Editor from './Editor';
+import Cover from './Cover';
 
 const Store = () => {
   const formRef = useRef(null);
   const editorRef = useRef(null);
+  const coverRef = useRef(null);
 
   const history = useHistory();
   const [tags, setTags] = useState();
@@ -21,7 +23,7 @@ const Store = () => {
     const getTags = async () => {
       try {
         const res = await api.get(`/tags?page=1&perPage=100`);
-        console.log(res.data);
+
         setTags(res.data);
       } catch (error) {
         toast.error('Erro ao buscar as tags...');
@@ -30,40 +32,61 @@ const Store = () => {
     getTags();
   }, []);
 
-  const handleSubmit = async formData => {
+  const handleSubmit = async form => {
     try {
+      formRef.current.setErrors({});
+      editorRef.current.setError('');
+      coverRef.current.setError('');
+
       const data = {
-        ...formData,
+        ...form,
         content: editorRef.current.getData(),
+        cover_path: coverRef.current.getPath(),
+        cover: coverRef.current.getData(),
       };
 
       const schema = yup.object().shape({
         title: yup
           .string()
+          .min(5)
           .required()
           .label('Título'),
         content: yup
           .string()
+          .min(5)
           .required()
           .label('Conteúdo'),
+        cover_path: yup
+          .string()
+          .required()
+          .label('Capa'),
+        tags: yup
+          .string()
+          .required()
+          .label('Tags'),
       });
 
       await schema.validate(data, {
         abortEarly: false,
       });
 
-      console.log(data);
-      // try {
-      //   const res = await api.post(`/tag`, data);
-      //   console.log(res);
+      const formData = new FormData();
 
-      //   if (res.status === 201) {
-      //     toast.success('Sucesso ao cadastrar a tag!');
-      //     history.push('/tags');
-      //   }
-      // } catch (err) {
-      //   toast.error('Erro ao cadastrar a tag!');
-      // }
+      formData.append('title', data.title);
+      formData.append('cover', data.cover);
+      formData.append('content', data.content);
+      formData.append('tags', JSON.stringify(data.tags.split(',')));
+
+      try {
+        const res = await api.post(`/article`, formData);
+
+        if (res.status === 201) {
+          toast.success('Sucesso ao cadastrar o artigo!');
+          history.push('/articles');
+        }
+      } catch (err) {
+        toast.error('Erro ao cadastrar o artigo!');
+      }
     } catch (err) {
       const validationErrors = {};
       if (err) {
@@ -71,6 +94,14 @@ const Store = () => {
           validationErrors[error.path] = error.message;
         });
         formRef.current.setErrors(validationErrors);
+
+        if (validationErrors.cover_path) {
+          coverRef.current.setError(validationErrors.cover_path);
+        }
+
+        if (validationErrors.content) {
+          editorRef.current.setError(validationErrors.content);
+        }
       }
     }
   };
@@ -86,7 +117,8 @@ const Store = () => {
             options={tags.data.map(t => ({ value: t._id, label: t.name }))}
           />
         )}
-        <Input label="" placeholder="Título" name="title" />
+        <Input label="Título" name="title" />
+        <Cover ref={coverRef} />
         <Editor ref={editorRef} />
         <SaveZone>
           <Button to="/articles" color="invert-back">

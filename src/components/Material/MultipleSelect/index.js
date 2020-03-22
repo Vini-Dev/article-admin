@@ -10,20 +10,23 @@ import { Container, SelectField, Label, Error } from './styles';
 const MultipleSelect = ({ name, label, options, ...rest }) => {
   const inputRef = useRef(null);
 
-  const { fieldName, registerField, error, defaultValue = [] } = useField(name);
+  const Field = useField(name);
+  const { fieldName, registerField, error } = Field;
 
   useEffect(() => {
     if (!rest.value)
       registerField({
         name: fieldName,
         ref: inputRef.current,
-        path: 'value',
+        path: 'node.value',
       });
   }, [fieldName, registerField, rest.value]);
 
   const props = {
     ...rest,
-    ...(!rest.value ? { defaultValue } : { value: rest.value }),
+    ...(!rest.value
+      ? { defaultValue: Field.defaultValue || [] }
+      : { value: rest.value }),
   };
 
   return (
@@ -35,10 +38,11 @@ const MultipleSelect = ({ name, label, options, ...rest }) => {
         inputRef={inputRef}
         name={fieldName}
         label={label}
-        error={error !== undefined}
         multiple
+        error={error !== undefined}
         input={<Input />}
         {...props}
+        {...rest}
       >
         {options.map(option => (
           <MenuItem key={option.value} value={option.value}>

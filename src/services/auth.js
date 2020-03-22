@@ -15,10 +15,10 @@ export const login = (data, rebember) => {
 };
 
 export const logout = () => {
-  if (localStorage.getItem(TOKEN_KEY)) {
-    localStorage.removeItem(TOKEN_KEY);
-  } else {
-    sessionStorage.removeItem(TOKEN_KEY);
+  if (!localStorage.getItem(TOKEN_KEY) && sessionStorage.getItem(TOKEN_KEY)) {
     localStorage.removeItem('last_url');
   }
+
+  localStorage.removeItem(TOKEN_KEY);
+  sessionStorage.removeItem(TOKEN_KEY);
 };

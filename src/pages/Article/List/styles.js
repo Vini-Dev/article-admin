@@ -81,7 +81,7 @@ export const ArticleCover = styled.div`
   background-repeat: no-repeat;
   border-radius: 4px;
 
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
     height: 180px;
   }
 
@@ -101,7 +101,7 @@ export const ArticleAuthor = styled.div`
     font-size: 14px;
   }
 
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
     font-size: 12px;
   }
 `;
@@ -116,13 +116,21 @@ export const ArticleTitle = styled.div`
 
 export const ArticleContent = styled.div`
   color: #3a3a3c;
+  height: 43px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media ${devices.laptop} {
     font-size: 16px;
     margin-bottom: 10px;
   }
 
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
     font-size: 14px;
     margin-bottom: 5px;
   }

@@ -6,21 +6,18 @@ import MediumEditor from 'react-medium-editor';
 import { Container, Error } from './styles';
 
 const Editor = (props, ref) => {
-  const [editor, setEditor] = useState();
+  const [editor, setEditor] = useState('Meu artigo...');
   const [error, setError] = useState();
 
   useImperativeHandle(ref, () => ({
     getData: () => editor,
     setError: value => setError(value),
+    setValue: value => setEditor(value),
   }));
 
   return (
     <Container>
-      <MediumEditor
-        text={editor}
-        onChange={e => setEditor(e)}
-        data-placeholder="Meu artigo..."
-      />
+      <MediumEditor text={editor} onChange={e => setEditor(e)} />
       {error && <Error>{error}</Error>}
     </Container>
   );

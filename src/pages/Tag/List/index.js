@@ -28,7 +28,7 @@ const List = () => {
     const getData = async () => {
       try {
         const res = await api.get(`/tags?page=1&perPage=100`);
-        console.log(res.data);
+
         setTags(res.data);
       } catch (error) {
         toast.error('Erro ao buscar as tags...');

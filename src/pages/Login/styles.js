@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Form } from '@unform/web';
 import FadeIn from '~/styles/animations/FadeIn';
+import devices from '~/styles/config/device';
 
 export const Container = styled.div`
   position: relative;
@@ -8,7 +9,12 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+
   background-color: #f5f5f5;
+
+  @media ${devices.mobile} {
+    padding: 15px;
+  }
 `;
 
 export const FormContainer = styled(Form)`
@@ -32,6 +38,10 @@ export const FormContainer = styled(Form)`
 
   .root-button {
     width: 100%;
+  }
+
+  @media ${devices.mobile} {
+    padding: 45px;
   }
 `;
 

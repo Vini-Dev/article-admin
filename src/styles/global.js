@@ -32,7 +32,7 @@ export default createGlobalStyle`
   .toast-container {
     z-index: 10000;
 
-    @media ${devices.mobileS} {
+    @media ${devices.mobile} {
       padding: 15px;
       top: 60px;
     }

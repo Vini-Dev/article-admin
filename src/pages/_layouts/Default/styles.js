@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import devices from '~/styles/config/device';
 
 export const Container = styled.div`
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
     padding-top: 60px;
   }
 

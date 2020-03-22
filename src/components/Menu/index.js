@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { IoIosMenu, IoIosClose } from 'react-icons/io';
+import { useLocation, useHistory } from 'react-router-dom';
+import { IoIosMenu, IoIosClose, IoIosLogOut } from 'react-icons/io';
+import { logout } from '~/services/auth';
 
-import { Container, Title, Toggle, Modal, Item } from './styles';
+import { Container, Title, Toggle, Logout, Modal, Item } from './styles';
 
 const modules = [
   {
     label: 'Tags',
     path: '/tags',
-    groups: ['/tags', '/tag/add', '/tag/edit'],
+    group: ['/tags', '/tag'],
   },
   {
     label: 'Artigos',
     path: '/articles',
-    groups: ['/articles', '/article/add', '/article/edit'],
+    group: ['/articles', '/article'],
   },
 ];
 
 const Menu = () => {
   const location = useLocation();
+  const history = useHistory();
 
   const [open, setOpen] = useState(false);
 
@@ -29,19 +31,27 @@ const Menu = () => {
 
   const handleClickModal = () => setOpen(!open);
 
+  const handleClickLogout = () => {
+    logout();
+    history.push('/');
+  };
+
+  const isActive = routes =>
+    routes.find(route => location.pathname.indexOf(route) !== -1);
+
   return (
     <Container>
       <Toggle type="button" onClick={handleClickModal}>
         {!open ? <IoIosMenu /> : <IoIosClose />}
       </Toggle>
+
       <Title>Articles</Title>
+      <Logout type="button" onClick={handleClickLogout}>
+        <IoIosLogOut />
+      </Logout>
       <Modal isOpen={open}>
         {modules.map(m => (
-          <Item
-            key={m.path}
-            to={m.path}
-            current={m.groups.includes(location.pathname) ? 'active' : ''}
-          >
+          <Item key={m.path} to={m.path} current={isActive(m.group)}>
             {m.label}
           </Item>
         ))}

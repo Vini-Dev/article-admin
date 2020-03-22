@@ -35,7 +35,7 @@ const Login = () => {
         const res = await api.post('/sessions', data);
 
         if (res.status === 200) {
-          login(res.data);
+          login(res.data, data.remenber);
           history.push(localStorage.getItem('last_url') || '/welcome');
         }
       } catch (error) {

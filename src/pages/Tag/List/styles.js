@@ -78,7 +78,7 @@ export const CardTime = styled.div`
   font-size: 14px;
   color: #48484a;
 
-  @media ${devices.mobileS} {
+  @media ${devices.mobile} {
     font-size: 12px;
   }
 `;

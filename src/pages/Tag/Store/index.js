@@ -27,7 +27,6 @@ const Store = () => {
 
       try {
         const res = await api.post(`/tag`, data);
-        console.log(res);
 
         if (res.status === 201) {
           toast.success('Sucesso ao cadastrar a tag!');
