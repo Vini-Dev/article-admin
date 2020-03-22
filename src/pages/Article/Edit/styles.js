@@ -2,7 +2,12 @@ import styled from 'styled-components';
 import { Form } from '@unform/web';
 import devices from '~/styles/config/device';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  @media ${devices.laptop} {
+    height: 100vh;
+    overflow-y: scroll;
+  }
+`;
 
 export const Content = styled(Form)`
   width: 100%;

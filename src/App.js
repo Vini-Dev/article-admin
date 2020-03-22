@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import { IoIosClose } from 'react-icons/io';
 import { usePromiseTracker } from 'react-promise-tracker';
 import TopLoadBar from '~/components/Material/TopLoadBar';
+import ModalDeleteProvider from '~/components/ModalDelete';
 import light from '~/styles/theme/light';
 import dark from '~/styles/theme/dark';
 
@@ -23,26 +24,28 @@ const App = () => {
   return (
     <ThemeProvider theme={theme === 'light' ? light : dark}>
       <Router history={history}>
-        <TopLoadBar loading={promiseInProgress} />
-        <ToastContainer
-          position="top-right"
-          className="toast-container"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnVisibilityChange
-          draggable
-          pauseOnHover
-          closeButton={
-            <>
-              <IoIosClose size={24} />
-            </>
-          }
-        />
-        <GlobalStyle />
-        <Routes />
+        <ModalDeleteProvider>
+          <TopLoadBar loading={promiseInProgress} />
+          <ToastContainer
+            position="top-right"
+            className="toast-container"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnVisibilityChange
+            draggable
+            pauseOnHover
+            closeButton={
+              <>
+                <IoIosClose size={24} />
+              </>
+            }
+          />
+          <GlobalStyle />
+          <Routes />
+        </ModalDeleteProvider>
       </Router>
     </ThemeProvider>
   );

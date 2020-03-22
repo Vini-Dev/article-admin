@@ -1,6 +1,8 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { ModalContext } from '~/components/ModalDelete';
+import DangerZone from '~/components/DangerZone';
 import Button from '~/components/Button';
 import Input from '~/components/Material/Input';
 import yup from '~/lib/yup';
@@ -11,7 +13,11 @@ import { Container, Content, Title, SaveZone } from './styles';
 const Store = () => {
   const { id } = useParams();
   const history = useHistory();
+
   const formRef = useRef(null);
+
+  const { open } = useContext(ModalContext);
+
   const [initialData, setInitialData] = useState('');
 
   useEffect(() => {
@@ -54,7 +60,6 @@ const Store = () => {
         toast.error('Error ao salvar a tag!');
       }
     } catch (err) {
-      toast.error('Error!');
       const validationErrors = {};
       if (err) {
         err.inner.forEach(error => {
@@ -64,6 +69,23 @@ const Store = () => {
       }
     }
   };
+
+  const onDelete = res => {
+    if (res.status === 200) {
+      toast.success('Sucesso ao deletar a tag!');
+      history.push('/tags');
+    } else {
+      toast.error('Error ao deletar a tag!');
+    }
+  };
+
+  const handleClickDelete = () =>
+    open({
+      url: `/tag/${id}`,
+      title: 'Deseja deseja deletar a tag?',
+      onDelete,
+      autoClose: true,
+    });
 
   return (
     <Container>
@@ -83,6 +105,8 @@ const Store = () => {
               Salvar
             </Button>
           </SaveZone>
+
+          <DangerZone text="Deletar tag" onClick={handleClickDelete} />
         </Content>
       )}
     </Container>

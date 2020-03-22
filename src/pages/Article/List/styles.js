@@ -54,13 +54,16 @@ export const GridArticles = styled.div`
 
 export const Article = styled(Link)`
   cursor: pointer;
-  display: block;
   text-decoration: none;
   position: relative;
   padding: 15px 5px;
 
+  display: block;
+
   @media ${devices.laptop} {
-    display: flex;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-gap: 10px;
   }
 
   &:not(:last-of-type) {
@@ -116,23 +119,19 @@ export const ArticleTitle = styled.div`
 
 export const ArticleContent = styled.div`
   color: #3a3a3c;
-  height: 43px;
-  margin: 0 auto;
-  font-size: 14px;
-  line-height: 1;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  margin-bottom: 10px;
   overflow: hidden;
-  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 
   @media ${devices.laptop} {
     font-size: 16px;
-    margin-bottom: 10px;
+    -webkit-line-clamp: 3;
   }
 
   @media ${devices.mobile} {
     font-size: 14px;
-    margin-bottom: 5px;
+    -webkit-line-clamp: 4;
   }
 `;
 
