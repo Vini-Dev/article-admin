@@ -1,6 +1,7 @@
 const primaryColor = '#5856D6';
 
 export default {
+  name: 'dark',
   // System
   background: '#000000',
   // Text
@@ -13,6 +14,11 @@ export default {
     scale6: '#BDBDBD',
     scale7: '#000000',
   },
+  // Switch
+  switchBackground: '#2C2C2E',
+  switchBackgroundActive: '#30D158',
+  switchToggleBackground: '#FFFFFF',
+  switchToggleBackgroundActive: '#FFFFFF',
   // Button
   buttonBackground: '#FAFAFA',
   buttonForeground: '#FFFFFF',
@@ -26,7 +32,7 @@ export default {
   buttonDangerBackground: '#FF3B30',
   buttonDangerBorder: '#FF3B30',
   // Input
-  inputForeground: '#2C2C2E',
+  inputForeground: '#FFFFFF',
   inputBorder: '#E5E5EA',
   inputBorderHover: '#AEAEB2',
   inputLabel: '#1C1C1E',
@@ -37,4 +43,10 @@ export default {
   // Menu
   menuBackground: '#1C1C1E',
   menuTitleForeground: '#FFFFFF',
+  // Form
+  formBackground: '#1C1C1E',
+  formTitleForeground: '#FFFFFF',
+  // Card
+  cardBorder: '#48484A',
+  cardBackground: '#1C1C1E',
 };

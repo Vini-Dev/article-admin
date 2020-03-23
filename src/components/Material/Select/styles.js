@@ -5,6 +5,8 @@ export const Container = styled.div``;
 
 export const SelectField = styled(TextField)`
   .MuiFormLabel-root {
+    color: ${({ theme }) => theme.inputForeground};
+
     &.Mui-focused {
       color: ${({ theme }) => theme.inputActiveLabelForeground};
     }
@@ -13,6 +15,8 @@ export const SelectField = styled(TextField)`
     }
   }
   .MuiInput-root {
+    color: ${({ theme }) => theme.inputForeground};
+
     &.MuiInput-underline {
       &:before {
         border-color: ${({ theme }) => theme.inputBorder};

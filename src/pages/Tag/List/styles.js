@@ -30,7 +30,7 @@ export const HeadControls = styled.div`
 export const Title = styled.div`
   font-size: 32px;
   font-weight: 800;
-  color: #1c1c1e;
+  color: ${({ theme }) => theme.foreground.scale0};
 `;
 
 export const NoContent = styled.div`
@@ -56,13 +56,13 @@ export const Card = styled(Link)`
   padding: 15px 5px;
 
   &:not(:last-of-type) {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid ${({ theme }) => theme.cardBorder};
   }
 
   &:hover {
     > div:first-of-type,
     svg {
-      color: #5856d6;
+      color: ${({ theme }) => theme.buttonActionBackground};
     }
   }
 `;
@@ -70,13 +70,13 @@ export const Card = styled(Link)`
 export const CardTitle = styled.div`
   font-size: 16px;
   font-weight: 500;
-  color: #1c1c1e;
+  color: ${({ theme }) => theme.foreground.scale0};
   transition: color 200ms linear;
 `;
 
 export const CardTime = styled.div`
   font-size: 14px;
-  color: #48484a;
+  color: ${({ theme }) => theme.foreground.scale4};
 
   @media ${devices.mobile} {
     font-size: 12px;
@@ -95,7 +95,7 @@ export const CardRedirectIcon = styled.div`
   padding: 15px;
 
   svg {
-    color: #48484a;
+    color: ${({ theme }) => theme.foreground.scale4};
     transition: color 200ms linear;
   }
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch } from 'react-router-dom';
 import Article from '~/pages/Article';
 import Login from '~/pages/Login';
+import Preferences from '~/pages/Preferences';
 import Tag from '~/pages/Tag';
 import Welcome from '~/pages/Welcome';
 
@@ -20,6 +21,8 @@ export default function Router() {
       <Routes path="/tags" component={Tag.List} />
       <Routes path="/tag/add" component={Tag.Store} />
       <Routes path="/tag/edit/:id" component={Tag.Edit} />
+      {/* Rota não encontrada */}
+      <Routes path="/preferences" component={Preferences} />
       {/* Rota não encontrada */}
       <Routes path="*" component={() => <h1>404</h1>} />
     </Switch>

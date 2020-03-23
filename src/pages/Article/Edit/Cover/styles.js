@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import { darken } from 'polished';
 
 const fading = keyframes`
   0% {
@@ -20,15 +21,23 @@ export const Content = styled.label`
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 220px;
   border-radius: 4px;
-  background-color: #eee;
+  background-color: ${({ theme }) => theme.cardBackground};
   margin-top: 30px;
+  text-align: center;
   transition: background-color 200ms linear, background-image 200ms linear;
 
   input {
     display: none;
+  }
+
+  svg {
+    color: ${({ theme }) => theme.foreground.scale5};
+    font-size: 32px;
   }
 
   ${({ src }) =>
@@ -42,7 +51,8 @@ export const Content = styled.label`
   ${({ progress }) =>
     progress > 0 && progress < 100
       ? css`
-          background-color: #d1d1d6;
+          background-color: ${({ theme }) =>
+            darken(0.03, theme.cardBackground)};
           animation: ${fading} 1s infinite;
         `
       : ''}
@@ -54,7 +64,7 @@ export const Bar = styled.div`
   bottom: 0;
   height: 3px;
   width: 100%;
-  background-color: #d1d1d6;
+  background-color: ${({ theme }) => darken(0.03, theme.cardBackground)};
 
   &:before {
     content: '';
@@ -79,6 +89,10 @@ export const Bar = styled.div`
       : css`
           display: none;
         `}
+`;
+
+export const ClickMessage = styled.span`
+  color: ${({ theme }) => theme.foreground.scale5};
 `;
 
 export const Error = styled.span`

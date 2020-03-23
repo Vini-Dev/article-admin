@@ -5,6 +5,7 @@ export const Container = styled.div`
 
   .medium-editor-element {
     font-size: 16px;
+    color: ${({ theme }) => theme.inputForeground};
   }
 `;
 

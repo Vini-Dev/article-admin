@@ -30,7 +30,7 @@ export const HeadControls = styled.div`
 export const Title = styled.div`
   font-size: 32px;
   font-weight: 800;
-  color: #1c1c1e;
+  color: ${({ theme }) => theme.foreground.scale0};
 `;
 
 export const NoContent = styled.div`
@@ -99,7 +99,7 @@ export const ArticleDescription = styled.div``;
 
 export const ArticleAuthor = styled.div`
   margin-bottom: 5px;
-  color: #3a3a3c;
+  color: ${({ theme }) => theme.foreground.scale4};
   @media ${devices.laptop} {
     font-size: 14px;
   }
@@ -112,13 +112,12 @@ export const ArticleAuthor = styled.div`
 export const ArticleTitle = styled.div`
   font-size: 20px;
   font-weight: 500;
-  color: #1c1c1e;
-
   transition: color 200ms linear;
+  color: ${({ theme }) => theme.foreground.scale0};
 `;
 
 export const ArticleContent = styled.div`
-  color: #3a3a3c;
+  color: ${({ theme }) => theme.foreground.scale4};
   margin-bottom: 10px;
   overflow: hidden;
   display: -webkit-box;
@@ -145,24 +144,8 @@ export const ArticleTag = styled.div`
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
-  color: #8e8e93;
-  background-color: #f5f5f5;
+  color: ${({ theme }) => theme.formTitleForeground};
+  background-color: ${({ theme }) =>
+    theme.name === 'dark' ? theme.formBackground : '#FAFAFA'};
   text-align: center;
-`;
-
-export const ArticleRedirectIcon = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  top: 0;
-  right: 0;
-  height: 100%;
-  padding: 15px;
-
-  svg {
-    color: #48484a;
-    transition: color 200ms linear;
-  }
 `;

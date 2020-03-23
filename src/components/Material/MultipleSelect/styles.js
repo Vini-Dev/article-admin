@@ -7,6 +7,8 @@ export const Container = styled(FormControl)``;
 
 export const SelectField = styled(Select)`
   &.MuiInput-underline {
+    color: ${({ theme }) => theme.inputForeground};
+
     &:before {
       border-color: ${({ theme }) => theme.inputBorder};
     }
@@ -25,8 +27,12 @@ export const SelectField = styled(Select)`
 `;
 
 export const Label = styled(InputLabel)`
-  &.MuiFormLabel-root.Mui-focused {
-    color: ${({ theme }) => theme.inputActiveLabelForeground};
+  &.MuiFormLabel-root {
+    color: ${({ theme }) => theme.inputForeground};
+
+    &.Mui-focused {
+      color: ${({ theme }) => theme.inputActiveLabelForeground};
+    }
   }
 
   &.Mui-error {

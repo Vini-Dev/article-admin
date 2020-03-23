@@ -22,13 +22,14 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.buttonDangerBackground};
       padding: 5px 10px;
       border-radius: 4px;
-      border: 1px solid ${({ theme }) => theme.inputBorder};
+      border: 1px solid ${({ theme }) => theme.buttonDangerBorder};
       background-color: transparent;
       transition: background-color 200ms linear, color 200ms linear,
         border-color 200ms linear;
 
       &:hover {
-        color: ${({ theme }) => theme.foreground.scale7};
+        color: ${({ theme }) => theme.buttonForeground};
+
         border-color: ${({ theme }) => theme.buttonDangerBackground};
         background-color: ${({ theme }) => theme.buttonDangerBackground};
       }
@@ -39,7 +40,7 @@ export const Container = styled.div`
 export const Title = styled.span`
   font-size: 18px;
   font-weight: 500;
-  color: ${({ theme }) => theme.foreground.scale1};
+  color: ${({ theme }) => theme.foreground.scale2};
   display: inline-block;
   margin-bottom: 15px;
 `;

@@ -22,16 +22,19 @@ export const Container = styled.div`
     margin-bottom: 30px;
 
     .MuiInput-root.MuiInput-underline:after {
-      border-color: #1c1c1e;
+      border-color: ${({ theme }) =>
+        theme.name === 'dark'
+          ? theme.foreground.scale0
+          : theme.foreground.scale7};
     }
   }
 
   button.invert {
-    color: #636366;
+    color: ${({ theme }) => theme.foreground.scale4};
     margin-right: 15px;
 
     &:hover {
-      color: #2c2c2e;
+      color: ${({ theme }) => theme.foreground.scale5};
     }
   }
 
@@ -43,7 +46,7 @@ export const Container = styled.div`
 export const Content = styled(Form)`
   width: 100%;
   max-width: 500px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.cardBackground};
   border-radius: 12px;
   padding: 60px;
   box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.1);
@@ -55,7 +58,8 @@ export const Content = styled(Form)`
 
 export const Title = styled.h1`
   margin-bottom: 30px;
-  color: #1c1c1e;
+
+  color: ${({ theme }) => theme.foreground.scale0};
 `;
 
 export const Controls = styled.div`
@@ -66,9 +70,9 @@ export const Controls = styled.div`
 
 export const Instruction = styled.div`
   font-size: 16px;
-  color: #2c2c2e;
+  color: ${({ theme }) => theme.foreground.scale2};
 `;
 export const DeleteString = styled.span`
-  color: #1c1c1e;
+  color: ${({ theme }) => theme.foreground.scale0};
   font-weight: 700;
 `;

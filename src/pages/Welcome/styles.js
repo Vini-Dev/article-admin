@@ -1,18 +1,17 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background-color: #fff;
   padding: 60px;
   height: 100vh;
 `;
 
 export const Greeting = styled.div`
   font-size: 32px;
-  color: #48484a;
+  color: ${({ theme }) => theme.foreground.scale2};
 `;
 
 export const Name = styled.div`
   font-size: 48px;
-  color: #1c1c1e;
+  color: ${({ theme }) => theme.foreground.scale0};
   font-weight: 800;
 `;

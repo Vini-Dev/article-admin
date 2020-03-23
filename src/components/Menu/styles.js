@@ -29,7 +29,8 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.div`
-  color: ${({ theme }) => theme.foreground.scale7};
+  color: ${({ theme }) =>
+    theme.name === 'light' ? theme.foreground.scale7 : theme.foreground.scale0};
 
   @media ${devices.mobile} {
     font-size: 16px;
@@ -56,7 +57,9 @@ export const Toggle = styled.button`
 
   padding: 8px 12px;
   height: 100%;
-  color: ${({ theme }) => theme.foreground.scale7};
+  color: ${({ theme }) =>
+    theme.name === 'light' ? theme.foreground.scale7 : theme.foreground.scale0};
+
   border: none;
   background-color: transparent;
 
@@ -76,7 +79,8 @@ export const Logout = styled.button`
   font-weight: 500;
 
   padding: 8px 12px;
-  color: ${({ theme }) => theme.foreground.scale7};
+  color: ${({ theme }) =>
+    theme.name === 'light' ? theme.foreground.scale7 : theme.foreground.scale0};
   border: none;
   background-color: transparent;
 

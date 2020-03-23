@@ -16,6 +16,11 @@ const modules = [
     path: '/articles',
     group: ['/articles', '/article'],
   },
+  {
+    label: 'Preferências',
+    path: '/preferences',
+    group: ['/preferences'],
+  },
 ];
 
 const Menu = () => {

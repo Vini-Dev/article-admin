@@ -27,6 +27,7 @@ export const Title = styled.div`
   margin-bottom: 30px;
   font-size: 24px;
   font-weight: 500;
+  color: ${({ theme }) => theme.foreground.scale0};
 `;
 
 export const Head = styled.div`
