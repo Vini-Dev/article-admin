@@ -20,7 +20,7 @@ export const ModalContext = createContext();
 const ModalProvider = ({ children }) => {
   const formRef = useRef(null);
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [params, setParams] = useState({
     url: '',
     title: '',

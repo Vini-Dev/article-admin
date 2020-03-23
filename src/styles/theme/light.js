@@ -3,6 +3,16 @@ const primaryColor = '#5856D6';
 export default {
   // System
   background: '#FFFFFF',
+  // Text
+  foreground: {
+    scale0: '#1c1c1e',
+    scale2: '#2C2C2E',
+    scale3: '#3A3A3C',
+    scale4: '#48484A',
+    scale5: '#636366',
+    scale6: '#8E8E93',
+    scale7: '#ffffff',
+  },
   // Button
   buttonBackground: '#FAFAFA',
   buttonForeground: '#FFFFFF',
@@ -24,4 +34,7 @@ export default {
   inputActiveLabelForeground: primaryColor,
   inputErrorBorder: '#FF3B30',
   inputErrorLabelForeground: '#FF3B30',
+  // Menu
+  menuBackground: '#1C1C1E',
+  menuTitleForeground: '#FFFFFF',
 };

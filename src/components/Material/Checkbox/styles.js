@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { lighten } from 'polished';
 
 export const Container = styled.div``;
 
@@ -17,10 +18,11 @@ export const Input = styled(FormControlLabel)`
 
 export const Checkbox = styled(MuiCheckbox)`
   &.MuiCheckbox-root.Mui-checked {
-    color: #007aff;
+    color: ${({ theme }) => theme.buttonActionBackground};
   }
   &.MuiCheckbox-root:hover {
-    background-color: #007aff15;
+    background-color: ${({ theme }) =>
+      lighten(0.35, theme.buttonActionBackground)};
   }
 `;
 

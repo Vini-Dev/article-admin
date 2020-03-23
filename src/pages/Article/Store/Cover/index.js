@@ -48,12 +48,14 @@ const Cover = (props, ref) => {
           name="cover"
           onChange={handleChangeCover}
         />
-        <div>
+        {!image && (
           <div>
-            <IoIosImages />
+            <div>
+              <IoIosImages />
+            </div>
+            <ClickMessage>Clique aqui para adicionar uma imagem!</ClickMessage>
           </div>
-          <ClickMessage>Clique aqui para adicionar uma imagem!</ClickMessage>
-        </div>
+        )}
         <Bar progress={progress} />
       </Content>
       {error && <Error>{error}</Error>}

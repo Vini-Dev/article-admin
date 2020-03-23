@@ -9,28 +9,28 @@ export const Container = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    border: 1px solid #ff3b30;
+    border: 1px solid ${({ theme }) => theme.buttonDangerBackground};
     border-radius: 4px;
 
     span {
-      color: #48484a;
+      color: ${({ theme }) => theme.foreground.scale3};
       font-size: 16px;
     }
 
     button {
       ${Ripple}
-      color: #ff3b30;
+      color: ${({ theme }) => theme.buttonDangerBackground};
       padding: 5px 10px;
       border-radius: 4px;
-      border: 1px solid #eeeeee;
+      border: 1px solid ${({ theme }) => theme.inputBorder};
       background-color: transparent;
       transition: background-color 200ms linear, color 200ms linear,
         border-color 200ms linear;
 
       &:hover {
-        color: #ffffff;
-        border-color: #ff3b30;
-        background-color: #ff3b30;
+        color: ${({ theme }) => theme.foreground.scale7};
+        border-color: ${({ theme }) => theme.buttonDangerBackground};
+        background-color: ${({ theme }) => theme.buttonDangerBackground};
       }
     }
   }
@@ -38,7 +38,8 @@ export const Container = styled.div`
 
 export const Title = styled.span`
   font-size: 18px;
-  color: #2c2c2e;
+  font-weight: 500;
+  color: ${({ theme }) => theme.foreground.scale1};
   display: inline-block;
   margin-bottom: 15px;
 `;

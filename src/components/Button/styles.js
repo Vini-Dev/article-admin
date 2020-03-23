@@ -19,11 +19,11 @@ export const Container = styled.button`
   }
 
   &.invert-back {
-    color: #48484a;
+    color: ${({ theme }) => theme.foreground.scale4};
     background-color: ${({ theme }) => theme.buttonInvertBackground};
 
     &:hover {
-      color: #3a3a3c;
+      color: ${({ theme }) => theme.foreground.scale3};
     }
   }
 
