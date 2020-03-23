@@ -20,15 +20,23 @@ export const Content = styled.label`
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 220px;
   border-radius: 4px;
   background-color: #eee;
   margin-top: 30px;
+  text-align: center;
   transition: background-color 200ms linear, background-image 200ms linear;
 
   input {
     display: none;
+  }
+
+  svg {
+    color: #636366;
+    font-size: 32px;
   }
 
   ${({ src }) =>
@@ -79,6 +87,10 @@ export const Bar = styled.div`
       : css`
           display: none;
         `}
+`;
+
+export const ClickMessage = styled.span`
+  color: #636366;
 `;
 
 export const Error = styled.span`

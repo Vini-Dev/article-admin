@@ -1,12 +1,22 @@
-const primaryColor = '#007AFF';
+const primaryColor = '#5856D6';
 
 export default {
   // System
   background: '#000000',
+  // Text
+  foreground: {
+    scale0: '#FFFFFF',
+    scale2: '#FAFAFA',
+    scale3: '#F5f5F5',
+    scale4: '#EEEEEE',
+    scale5: '#E0E0E0',
+    scale6: '#BDBDBD',
+    scale7: '#000000',
+  },
   // Button
-  buttonBackground: '#1c1c1e',
+  buttonBackground: '#FAFAFA',
   buttonForeground: '#FFFFFF',
-  buttonBorder: '#1c1c1e',
+  buttonBorder: '#FAFAFA',
   buttonInvertForeground: primaryColor,
   buttonInvertBackground: 'transparent',
   buttonActionBackground: primaryColor,
@@ -24,4 +34,7 @@ export default {
   inputActiveLabelForeground: primaryColor,
   inputErrorBorder: '#FF3B30',
   inputErrorLabelForeground: '#FF3B30',
+  // Menu
+  menuBackground: '#1C1C1E',
+  menuTitleForeground: '#FFFFFF',
 };

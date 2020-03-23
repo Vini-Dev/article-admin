@@ -22,9 +22,10 @@ export const BoxBar = styled.div`
 
 export const Bar = styled(LoadingBar)`
   &.MuiLinearProgress-colorPrimary {
-    background-color: #007aff20;
+    color: ${({ theme }) => theme.buttonActionBackground};
+
     .MuiLinearProgress-barColorPrimary {
-      background-color: #007aff;
+      background-color: ${({ theme }) => theme.buttonActionBackground};
     }
   }
 `;

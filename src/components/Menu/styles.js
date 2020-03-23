@@ -5,7 +5,7 @@ import FadeIn from '~/styles/animations/FadeIn';
 import devices from '~/styles/config/device';
 
 export const Container = styled.div`
-  background-color: #1c1c1e;
+  background-color: ${({ theme }) => theme.menuBackground};
 
   @media ${devices.mobile} {
     position: fixed;
@@ -25,13 +25,11 @@ export const Container = styled.div`
     width: 100%;
     grid-area: menu;
     padding: 30px;
-
-    border-right: 1px solid #eee;
   }
 `;
 
 export const Title = styled.div`
-  color: #ffffff;
+  color: ${({ theme }) => theme.foreground.scale7};
 
   @media ${devices.mobile} {
     font-size: 16px;
@@ -58,7 +56,7 @@ export const Toggle = styled.button`
 
   padding: 8px 12px;
   height: 100%;
-  color: #ffffff;
+  color: ${({ theme }) => theme.foreground.scale7};
   border: none;
   background-color: transparent;
 
@@ -74,14 +72,11 @@ export const Toggle = styled.button`
 `;
 
 export const Logout = styled.button`
-  display: none;
-
   font-size: 14px;
   font-weight: 500;
 
   padding: 8px 12px;
-  height: 100%;
-  color: #ffffff;
+  color: ${({ theme }) => theme.foreground.scale7};
   border: none;
   background-color: transparent;
 
@@ -93,6 +88,12 @@ export const Logout = styled.button`
 
   @media ${devices.mobile} {
     display: block;
+    height: 100%;
+  }
+  @media ${devices.laptop} {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
   }
 `;
 
@@ -104,7 +105,7 @@ export const Modal = styled.div`
     position: fixed;
     width: 100vw;
     padding: 30px;
-    background-color: #2c2c2e;
+    background-color: ${({ theme }) => theme.menuBackground};
 
     ${({ isOpen }) =>
       isOpen
@@ -127,19 +128,19 @@ export const Item = styled(Link)`
   width: 100%;
   border-radius: 4px;
   padding: 10px 0;
-  color: #c7c7cc;
+  color: ${({ theme }) => theme.foreground.scale6};
   font-size: 16px;
   font-weight: 500;
   text-decoration: none;
   transition: color 200ms linear;
 
-  ${({ current }) =>
+  ${({ current, theme }) =>
     current &&
     css`
-      color: #5856d6;
-
+      color: ${theme.buttonActionBackground};
+      background-color: ;
       &:hover {
-        color: ${darken(0.03, '#5856D6')};
+        color: ${darken(0.03, theme.buttonActionBackground)};
       }
     `}
 `;

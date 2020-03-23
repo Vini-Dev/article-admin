@@ -1,6 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { ModalContext } from '~/components/ModalDelete';
+import DangerZone from '~/components/DangerZone';
 import Button from '~/components/Button';
 import Input from '~/components/Material/Input';
 import MultipleSelect from '~/components/Material/MultipleSelect';
@@ -12,12 +14,15 @@ import Editor from './Editor';
 import Cover from './Cover';
 
 const Store = () => {
+  const { id } = useParams();
+  const history = useHistory();
+
   const formRef = useRef(null);
   const editorRef = useRef(null);
   const coverRef = useRef(null);
 
-  const history = useHistory();
-  const { id } = useParams();
+  const { open } = useContext(ModalContext);
+
   const [tags, setTags] = useState();
   const [initialData, setInitialData] = useState();
 
@@ -99,11 +104,11 @@ const Store = () => {
         const res = await api.put(`/article`, formData);
 
         if (res.status === 200) {
-          toast.success('Sucesso ao cadastrar o artigo!');
+          toast.success('Sucesso ao salvar o artigo!');
           history.push('/articles');
         }
       } catch (err) {
-        toast.error('Erro ao cadastrar o artigo!');
+        toast.error('Erro ao salvar o artigo!');
       }
     } catch (err) {
       const validationErrors = {};
@@ -123,6 +128,23 @@ const Store = () => {
       }
     }
   };
+
+  const onDelete = res => {
+    if (res.status === 200) {
+      toast.success('Sucesso ao deletar o artigo!');
+      history.push('/articles');
+    } else {
+      toast.error('Error ao deletar o artigo!');
+    }
+  };
+
+  const handleClickDelete = () =>
+    open({
+      url: `/article/${id}`,
+      title: 'Deseja deseja deletar o artigo?',
+      onDelete,
+      autoClose: true,
+    });
 
   return (
     <Container>
@@ -151,6 +173,7 @@ const Store = () => {
               Salvar
             </Button>
           </SaveZone>
+          <DangerZone text="Deletar o artigo" onClick={handleClickDelete} />
         </Content>
       )}
     </Container>

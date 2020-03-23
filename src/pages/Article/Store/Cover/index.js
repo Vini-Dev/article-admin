@@ -4,8 +4,9 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from 'react';
+import { IoIosImages } from 'react-icons/io';
 
-import { Container, Content, Bar, Error } from './styles';
+import { Container, Content, Bar, Error, ClickMessage } from './styles';
 
 const Cover = (props, ref) => {
   const inputRef = useRef(null);
@@ -47,6 +48,14 @@ const Cover = (props, ref) => {
           name="cover"
           onChange={handleChangeCover}
         />
+        {!image && (
+          <div>
+            <div>
+              <IoIosImages />
+            </div>
+            <ClickMessage>Clique aqui para adicionar uma imagem!</ClickMessage>
+          </div>
+        )}
         <Bar progress={progress} />
       </Content>
       {error && <Error>{error}</Error>}
