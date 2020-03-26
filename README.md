@@ -1,6 +1,6 @@
 # Article ADMIN
 
-Guide to configure and use the ADMIN dashboard
+Guide to configure and use the ADMIN dashboard. [API Link](https://github.com/Vini-Dev/article-api)
 
 ## Enviromments variables
 
