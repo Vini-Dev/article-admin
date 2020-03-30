@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import { lighten } from 'polished';
 import MuiCheckbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { lighten } from 'polished';
 
 export const Container = styled.div``;
 
@@ -22,7 +22,7 @@ export const Checkbox = styled(MuiCheckbox)`
   }
   &.MuiCheckbox-root:hover {
     background-color: ${({ theme }) =>
-      lighten(0.35, theme.buttonActionBackground)};
+      lighten(0.3, theme.buttonActionBackground)};
   }
 `;
 
