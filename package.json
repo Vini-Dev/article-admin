@@ -26,7 +26,7 @@
     "@material-ui/core": "^4.9.7",
     "@unform/core": "^2.0.0",
     "@unform/web": "^2.0.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "customize-cra": "^0.9.1",
     "date-fns": "^2.11.0",
     "date-fns-tz": "^1.0.10",
